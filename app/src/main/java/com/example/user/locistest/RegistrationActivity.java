@@ -40,16 +40,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void getToken(String token, int responseCode) {
         switch (responseCode) {
-            case 200: {
-                int length = token.length() - 1;
-                response = token.substring(1, length);
-                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                intent.putExtra("token", response);
-                startActivity(intent);
+            case 200:
+                ;
+              break;
 
-            }
-            ;
-            break;
             case 403:
                 ;
                 break;

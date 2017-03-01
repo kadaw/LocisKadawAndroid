@@ -44,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
                 response = token.substring(1, length);
                 Intent intent = new Intent(LoginActivity.this, UserPageTest.class);
                 intent.putExtra("token", response);
+
                 startActivity(intent);
+                finish();
 
             };
             break;
