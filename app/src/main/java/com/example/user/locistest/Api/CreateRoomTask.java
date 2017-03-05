@@ -1,6 +1,7 @@
 package com.example.user.locistest.Api;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.user.locistest.CreateRoomActivity;
 
@@ -50,19 +51,20 @@ public class CreateRoomTask extends AsyncTask {
     protected Object doInBackground(Object[] params) {
         activity = (CreateRoomActivity) params[0];
         try{
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("Name",roomLabel);
-
-            String jsonString = jsonObject.toString();
-            URL url = new URL("http://locis.lod-misis.ru/user");
+            //JSONObject jsonObject = new JSONObject();
+            //jsonObject.accumulate("roomName",roomLabel);
+            //String jsonString = jsonObject.toString();
+            URL url = new URL("http://locis.lod-misis.ru/room/");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type","application/json");
+            connection.setRequestProperty("Authorization", "Basic 9160E4D0D20D2E488EF299A8D637B4DC");
             connection.connect();
             OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
-            wr.write(jsonString);
+            wr.write(roomLabel);
             wr.flush();
             responseCode = connection.getResponseCode();
+            Log.d("kek", "Response code: "+responseCode);
             InputStream is = connection.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             token = convertStreamToString(is);

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (responseCode){
             case 200 :{int length = token.length() - 1;
                 response = token.substring(1, length);
-                Intent intent = new Intent(LoginActivity.this, UserPageTest.class);
+                Intent intent = new Intent(LoginActivity.this, UserPage.class);
                 intent.putExtra("token", response);
 
                 startActivity(intent);
